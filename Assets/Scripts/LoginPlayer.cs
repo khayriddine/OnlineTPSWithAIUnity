@@ -11,24 +11,25 @@ public class LoginPlayer : MonoBehaviour {
 	[SerializeField] GameObject pseudoPass;
 	[SerializeField] MainSceneEventHandler MainEventHandler;
 
-	[HideInInspector] public string MapName;
-	[HideInInspector] public string CharacterColor;
+	//[HideInInspector] 
+	public string MapName;
+	//[HideInInspector] 
+	public string CharacterColor;
 
 
-	string name;
-	string pass;
 	bool isReady;
 	int indexCharacter,indexMap;
 
 
 	public string Name{ get{ 
-			name = "";
-			if (pseudoText != null)
+			string name = "";
+			if (pseudoText != null) {
 				name = pseudoText.GetComponentInChildren<Text> ().text;
+			}
 			return name; }
 	}
 	public string Pass{ get{ 
-			pass = "";
+			string pass = "";
 			if (pseudoPass != null)
 				pass = pseudoPass.GetComponentInChildren<Text> ().text;
 			return pass; }
@@ -39,8 +40,6 @@ public class LoginPlayer : MonoBehaviour {
 		CharacterColor = "blue";
 		indexCharacter = 0;
 		indexMap = 0;
-
-
 	}
 
 	// Update is called once per frame
@@ -89,8 +88,13 @@ public class LoginPlayer : MonoBehaviour {
 			MainScene_GameManager.Instance.NameAnimator.SetBool ("Error", true);
 		}
 
-		if(!String.IsNullOrEmpty(Name) && !String.IsNullOrEmpty(Pass) && Pass.Equals("123"))
+		if (!String.IsNullOrEmpty (Name) && !String.IsNullOrEmpty (Pass) && Pass.Equals ("123")) {
+			DataToBeSaved.Instance.pseudo = Name;
+			DataToBeSaved.Instance.color = CharacterColor;
+			DataToBeSaved.Instance.mapName = MapName;
 			SceneManager.LoadScene(MapName, LoadSceneMode.Single);
+		}
+			
 
 	}
 

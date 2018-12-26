@@ -58,6 +58,7 @@ public class MainScene_GameManager : MonoBehaviour {
 		CharacterPlaceHolder.transform.position = CharacterPlaces [0];
 		MainCam.transform.SetPositionAndRotation(cameraTransforms [0].position,cameraTransforms [0].rotation);
 		MapImage.GetComponent<Image> ().sprite = mapImages [0];
+
 	}
 	
 	// Update is called once per frame
