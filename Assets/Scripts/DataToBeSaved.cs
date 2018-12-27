@@ -7,7 +7,7 @@ using SocketIO;
 public class DataToBeSaved : MonoBehaviour {
 
 	public static DataToBeSaved Instance;
-	public SocketIOComponent socket;
+
 	//public LoginPlayer player;//{get{return MainScene_GameManager.Instance.transform.root.GetComponent<LoginPlayer> ();}}
 	public string color;
 	public string pseudo;
@@ -28,15 +28,6 @@ public class DataToBeSaved : MonoBehaviour {
 
 	}
 
-	IEnumerator ConnectToServer(){
-		yield return new WaitForSeconds (.5f);
-		socket.Emit ("player connected");
-	}
-
-	public void JoinTheGame(){
-		socket.Emit ("player connected");
-		//StartCoroutine (ConnectToServer ());
-	}
 
 
 

@@ -2,48 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
 
-	public int Health;
-	public string color;
-	public string pseudo;
+	public Character character;
 
-	[SerializeField] GameObject playerMesh;
-
-
-	public Vector3 Position{
-		get{
-			return transform.position;
-		}
-	}
-	public Quaternion Rotation{
-		get{
-			return transform.rotation;
-		}
-	}
 
 	Vector3 lastPos;
 	Quaternion lastRot;
 
-	[SerializeField] GameManager gameManager;
 
 	// Use this for initialization
-	void Start () {
-		lastPos = transform.position;
-		lastRot = transform.rotation;
-		//LoginPlayer player = DataToBeSaved.Instance.player;
-		color = DataToBeSaved.Instance.color;
-		playerMesh.GetComponent<Renderer> ().material = gameManager.materials [Find (gameManager.colors, color)];
-		//color = player.CharacterColor;
-		pseudo = DataToBeSaved.Instance.name;
-		Health = 100;
+	void OnEnable () {
+		character = gameObject.GetComponent<Character> ();
+		CreateCharacter ();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		if (Vector3.Distance(lastPos,Position)>.05f) {
 			lastPos = Position;
 			Debug.Log (Position);
@@ -52,8 +32,16 @@ public class Player : MonoBehaviour {
 			lastRot = Rotation;
 			Debug.Log (Rotation);
 		}
+		*/
 	}
 
+
+	public void CreateCharacter(){
+		
+
+		character.Create (DataToBeSaved.Instance.pseudo, DataToBeSaved.Instance.color);
+
+	}
 	int Find(string[] array,string word){
 		int i;
 		for(i=0;i<array.Length;i++) {
