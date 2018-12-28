@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameUIScript : MonoBehaviour {
 
+	[SerializeField] GameObject ChatInputField;
+	string msg;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,7 @@ public class GameUIScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+
 }

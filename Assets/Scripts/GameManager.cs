@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour {
 
@@ -14,7 +15,11 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Texture[] charactersIcon;
 	[SerializeField] Material[] charactersMaterial;
 	[SerializeField] GameObject PlayerModel;
+	[SerializeField] GameObject ChatContent;
+	[SerializeField] GameObject prefabText;
+	PlayerEventHandler PlayerEvent;
 	public GameObject CharacterModel;
+	public Dictionary<string,string> CurrentPlayer;
 	//variable elemnts
 	[SerializeField] GameObject playerIcon;
 
@@ -34,15 +39,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnEnable(){
+		PlayerEvent = GetComponent<PlayerEventHandler> ();
+		PlayerEvent.SendMsgEvent += PlayerSendMessage;
 		//characterEvent = gameObject.GetComponent<CharacterEventHandler> ();
 		//subscribe to events: 
-		Dictionary<string,string> newClient = new Dictionary<string, string>();
-		newClient ["color"] = DataToBeSaved.Instance.color;
-		newClient ["map"] = DataToBeSaved.Instance.mapName;
-		newClient ["pseudo"] = DataToBeSaved.Instance.pseudo;
-		Transform spawn = GameObject.FindWithTag (newClient ["color"]).transform;
+		CurrentPlayer = new Dictionary<string, string>();
+		CurrentPlayer ["color"] = DataToBeSaved.Instance.color;
+		CurrentPlayer ["map"] = DataToBeSaved.Instance.mapName;
+		CurrentPlayer ["pseudo"] = DataToBeSaved.Instance.pseudo;
+		Transform spawn = GameObject.FindWithTag (CurrentPlayer ["color"]).transform;
 		playerObj = GameObject.Instantiate (PlayerModel, spawn.position, spawn.rotation);
-		JSONObject json = new JSONObject (newClient);
+		JSONObject json = new JSONObject (CurrentPlayer);
 		//Instance.socket.Emit ("newClient",json);
 		StartCoroutine (JoinTheGame (json));
 
@@ -52,8 +59,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnDisable(){
-		//characterEvent.UpdateCharacterSkinEvent -= UpdateSkinCharacter;
-		Instance.socket.Emit("dis");
+		PlayerEvent.SendMsgEvent -= PlayerSendMessage;
 	}
 	// Use this for initialization
 	void Start () {
@@ -64,17 +70,48 @@ public class GameManager : MonoBehaviour {
 		allOtherCharacters = new List<GameObject>();
 		Instance.socket.On ("ancientClients", AddAncientsClients);
 		Instance.socket.On ("new player connected", OnNewPlayerConnected);
+		Instance.socket.On ("broadcastMsg", OnMsgReceived);
 		Instance.socket.On ("userDisconnect", OnPlayerDisconnect);
 	}
+	// Update is called once per frame
+	void Update () {
 
+	}
 	IEnumerator JoinTheGame(JSONObject json){
 		yield return new WaitForSeconds (.5f);
 		Instance.socket.Emit ("newClient",json);
 
 	}
-	// Update is called once per frame
-	void Update () {
-		
+	public void DisplayMsgOnScreen(string msg,string color){
+
+		GameObject textObj = Instantiate (prefabText, ChatContent.transform);
+		textObj.GetComponent<Text> ().text = msg ;
+		textObj.GetComponent<Text> ().color = GetPlayerColor(color);
+	}
+
+	public Color GetPlayerColor(string color){
+		Color c = new Color ();
+
+		switch (color) {
+		case "blue" : c  = Color.blue;
+			break;
+		case "red" : c  = Color.red;
+			break;
+		case "yellow" : c  = Color.yellow;
+			break;
+		case "green" : c  = Color.green;
+			break;
+		case "white" : c  = Color.white;
+			break;
+		case "purple" : c  = Color.magenta;
+			break;
+		}
+
+		return c;
+	}
+	void OnMsgReceived(SocketIOEvent e){
+		Dictionary<string,string> dict = e.data.ToDictionary ();
+		DisplayMsgOnScreen (dict ["msg"], dict ["color"]);
 	}
 	void OnPlayerDisconnect(SocketIOEvent e){
 		
@@ -120,6 +157,11 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	public void PlayerSendMessage(string msg){
+		Dictionary<string,string> json = new  Dictionary<string,string> ();
+		json ["msg"] = msg;
+		Instance.socket.Emit ("chat",new JSONObject(json));
+	}
 
 	int Find(string[] array,string word){
 		int i;

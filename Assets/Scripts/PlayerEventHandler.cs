@@ -7,6 +7,7 @@ public class PlayerEventHandler : MonoBehaviour {
 	public delegate void HealthEventHandler(int amount);
 	public delegate void ArmorEventHandler(int amount);
 	public delegate void WeaponEventHandler(int amount);
+	public delegate void ChatEventHandler(string msg);
 
 
 	public event HealthEventHandler HealthDeductEvent;
@@ -20,6 +21,9 @@ public class PlayerEventHandler : MonoBehaviour {
 
 	public event WeaponEventHandler GreandeDeductEvent;
 	public event WeaponEventHandler GreandeRechargeEvent;
+
+	public event ChatEventHandler SendMsgEvent;
+
 
 	public void CallHealthDeductEvent(int amount){
 		if (HealthDeductEvent != null) {
@@ -59,6 +63,12 @@ public class PlayerEventHandler : MonoBehaviour {
 	public void CallGreandeRechargeEvent(int amount){
 		if (GreandeRechargeEvent != null) {
 			GreandeRechargeEvent (amount);
+		}
+	}
+
+	public void CallSendMsgEvent(string msg){
+		if (SendMsgEvent != null) {
+			SendMsgEvent (msg);
 		}
 	}
 

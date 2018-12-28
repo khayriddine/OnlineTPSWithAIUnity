@@ -43,8 +43,9 @@ public class TestSocketIO : MonoBehaviour
 		socket.On("boop", TestBoop);
 		socket.On("error", TestError);
 		socket.On("close", TestClose);
-		
+
 		StartCoroutine("BeepBoop");
+
 	}
 
 	private IEnumerator BeepBoop()

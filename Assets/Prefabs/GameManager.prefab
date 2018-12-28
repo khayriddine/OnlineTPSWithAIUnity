@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1534511199147972}
+  m_IsPrefabAsset: 1
+--- !u!1 &1534511199147972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4094735946109274}
+  - component: {fileID: 114559535627128706}
+  - component: {fileID: 114497698818709348}
+  - component: {fileID: 114273083991500194}
+  - component: {fileID: 114832453035489450}
+  - component: {fileID: 114451174005182534}
+  - component: {fileID: 114507664646605144}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1953660529404528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4359004533642006}
+  - component: {fileID: 114838044072873490}
+  m_Layer: 0
+  m_Name: SocketIO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4094735946109274
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4359004533642006}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4359004533642006
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953660529404528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4094735946109274}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114273083991500194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f142a95182671b49b16593c6238cf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114451174005182534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c5ed4db7abcd84e83ccc0c95fdee88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabText: {fileID: 0}
+  MsgText: {fileID: 0}
+  ChatContent: {fileID: 0}
+--- !u!114 &114497698818709348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5593adabeab121043815dbccfb14d5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114507664646605144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571c7f2f281513f4e96c8981f8f577d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114559535627128706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84b50282c3d4d443a28aff905fff86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socket: {fileID: 114838044072873490}
+  colors:
+  - blue
+  - red
+  - yellow
+  - green
+  - white
+  - purple
+  maps:
+  - Dust 2
+  - Nuke
+  - Italy
+  charactersIcon:
+  - {fileID: 2800000, guid: a869ddda864c1d143a55be0212b7ff36, type: 3}
+  - {fileID: 2800000, guid: 88d57943b8a085c41a2c1f3a9670e402, type: 3}
+  - {fileID: 2800000, guid: 49daef4d15d565441b483885cb3f6926, type: 3}
+  - {fileID: 2800000, guid: d1a62bbae4dd9c149acc061538728e2a, type: 3}
+  - {fileID: 2800000, guid: c3d598e873f392046854af04e90ed926, type: 3}
+  - {fileID: 2800000, guid: 76e0385ae72166446a1763b1f2a67c2c, type: 3}
+  charactersMaterial:
+  - {fileID: 2100000, guid: 2e7b11d6712111440834cb098dd5415a, type: 2}
+  - {fileID: 2100000, guid: 727d00d683af2fc42a26982263157ad1, type: 2}
+  - {fileID: 2100000, guid: 7249e2f11d6cacc4c88581b7603a59c9, type: 2}
+  - {fileID: 2100000, guid: a5c35d7f5820f534c80a699a9b6daaf7, type: 2}
+  - {fileID: 2100000, guid: 32fdeb880de82e6448a6a40a764d336c, type: 2}
+  - {fileID: 2100000, guid: 92133e54d3d0b6b45a9dc0565801a824, type: 2}
+  PlayerModel: {fileID: 1651648774774602, guid: acc6cd565e15554408ef6f9ec49f3889,
+    type: 2}
+  CharacterModel: {fileID: 1247955529079504, guid: 71a1d6949392d544cb760eb121126b51,
+    type: 2}
+  playerIcon: {fileID: 0}
+  allOtherCharacters: []
+  characterEvent: {fileID: 0}
+--- !u!114 &114832453035489450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534511199147972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e4da7df103c9048a68b5cb74183107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChatInputField: {fileID: 0}
+--- !u!114 &114838044072873490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953660529404528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961346d7e16a445ff93777573e78efd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket
+  autoConnect: 1
+  reconnectDelay: 5
+  ackExpirationTime: 1800
+  pingInterval: 25
+  pingTimeout: 60
